@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, status, Response, Depends
+from fastapi import APIRouter, Response, Depends
 
 from app.user.crud import UserCRUD
 from app.user.dependencies import get_current_user
@@ -9,17 +9,21 @@ from app.user.auth import (get_password_hash, authenticate_user,
 
 from app.exceptions import CredentialsException, UserAlreadyExistsException
 
+from app.user.schemas import SUserRepresentation
+
+
 router = APIRouter(prefix='/auth', tags=['Auth'])
 
 
 @router.post('/register')
-async def register_user(user_data: SUserAuth):
+async def register_user(user_data: SUserAuth) -> SUserRepresentation:
     user_exists = await UserCRUD.get_obj_or_none(email=user_data.email)
     if user_exists:
         raise UserAlreadyExistsException
     has_pass = get_password_hash(user_data.password)
-    await UserCRUD.create_obj(email=user_data.email, hashed_password=has_pass)
-    return status.HTTP_201_CREATED
+    return await UserCRUD.create_obj(
+        email=user_data.email, hashed_password=has_pass
+    )
 
 
 @router.post('/login')
@@ -38,6 +42,9 @@ async def logout_user(response: Response):
 
 
 @router.get('/me')
-async def get_current_user(user: User = Depends(get_current_user)):
+async def get_current_user(
+        user: User = Depends(get_current_user)
+) -> SUserRepresentation:
+
     return user
 

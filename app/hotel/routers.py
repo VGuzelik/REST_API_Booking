@@ -12,7 +12,7 @@ async def get_hotels() -> list[SHotel]:
 
 
 @router.get('/{hotel_id}')
-async def get_booking_by_id(hotel_id: int) -> SHotel:
+async def get_hotel_by_id(hotel_id: int) -> SHotel:
     return await HotelCRUD().get_obj_by_id(hotel_id)
 
 

@@ -12,10 +12,6 @@ from alembic import context
 sys.path.insert(0, dirname(dirname(dirname(abspath(__file__)))))
 
 from app.db import Base, SQLALCHEMY_DATABASE_URL
-from app.hotel.models import Hotel
-from app.booking.models import Booking
-from app.user.models import User
-from app.room.models import Room
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

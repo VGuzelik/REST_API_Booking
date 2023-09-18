@@ -3,4 +3,4 @@ from app.hotel.models import Hotel
 
 
 class HotelCRUD(BaseCRUD):
-    model = Hotel
+    _model = Hotel

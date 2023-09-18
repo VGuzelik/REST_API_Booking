@@ -17,3 +17,11 @@ class CredentialsException(BookingsExceptions):
 class UserAlreadyExistsException(BookingsExceptions):
     status_code = status.HTTP_409_CONFLICT
     detail = 'User already exists'
+
+
+class RoomCannotBeBlocked(BookingsExceptions):
+    status_code = status.HTTP_409_CONFLICT
+    detail = 'Room can not be blocked'
+
+
+

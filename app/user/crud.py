@@ -3,4 +3,4 @@ from app.user.models import User
 
 
 class UserCRUD(BaseCRUD):
-    model = User
+    _model = User

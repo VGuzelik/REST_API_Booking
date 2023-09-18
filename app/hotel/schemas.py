@@ -3,7 +3,7 @@ from datetime import date
 from typing import Optional
 
 from fastapi import Query
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, Field
 
 
 @dataclass
@@ -16,7 +16,6 @@ class HotelSearchArgs:
 
 
 class SHotel(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
 
     id: int
     name: str
