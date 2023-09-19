@@ -1,5 +1,5 @@
-from sqlalchemy import Column, Integer, String, JSON, ForeignKey, \
-    CheckConstraint
+from sqlalchemy import (JSON, CheckConstraint, Column, ForeignKey, Integer,
+                        String)
 
 from app.db import Base
 

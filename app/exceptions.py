@@ -22,6 +22,3 @@ class UserAlreadyExistsException(BookingsExceptions):
 class RoomCannotBeBlocked(BookingsExceptions):
     status_code = status.HTTP_409_CONFLICT
     detail = 'Room can not be blocked'
-
-
-

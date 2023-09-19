@@ -1,12 +1,9 @@
-from datetime import date
-
 from fastapi import APIRouter, Depends
 
 from app.booking.crud import BookingCRUD
-from app.booking.schemas import SBooking, BookingArgs
-
-from app.user.models import User
+from app.booking.schemas import BookingArgs, SBooking
 from app.user.dependencies import get_current_user
+from app.user.models import User
 
 router = APIRouter(prefix='/bookings', tags=['Bookings'])
 
@@ -34,10 +31,3 @@ async def add_bookings(
         date_from=verified_data.date_from,
         price=verified_data.price,
     )
-
-
-
-
-
-
-

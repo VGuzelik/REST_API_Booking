@@ -1,13 +1,13 @@
-import jwt
-
 from datetime import datetime
 
-from fastapi import Request, Depends
-from fastapi.security import OAuth2PasswordBearer
+import jwt
+from fastapi import Depends, Request
 
 from app.config import jwt_settings as jwt_s
-from app.user.crud import UserCRUD
 from app.exceptions import CredentialsException
+from app.user.crud import UserCRUD
+
+# from fastapi.security import OAuth2PasswordBearer
 
 
 # oauth2_scheme = OAuth2PasswordBearer(tokenUrl='auth/login')

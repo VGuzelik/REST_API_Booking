@@ -1,17 +1,16 @@
 from dataclasses import dataclass, field
 from datetime import date
 
-from pydantic import BaseModel, ConfigDict
-from sqlalchemy import or_, and_, func, select
-
 from db import async_session_maker
 from exceptions import RoomCannotBeBlocked
-from app.booking.models import Booking
 from hotel.room.models import Room
+from pydantic import BaseModel
+from sqlalchemy import and_, func, or_, select
+
+from app.booking.models import Booking
 
 
 class SBooking(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
 
     id: int
     room_id: int
@@ -68,7 +67,3 @@ class BookingArgs:
             price = await session.execute(get_price)
             self.price = price.scalar()
             return self
-
-
-
-

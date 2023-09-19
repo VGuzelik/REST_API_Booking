@@ -1,16 +1,12 @@
-from fastapi import APIRouter, Response, Depends
+from fastapi import APIRouter, Depends, Response
 
+from app.exceptions import CredentialsException, UserAlreadyExistsException
+from app.user.auth import (authenticate_user, create_access_token,
+                           get_password_hash)
 from app.user.crud import UserCRUD
 from app.user.dependencies import get_current_user
 from app.user.models import User
-from app.user.schemas import SUserAuth
-from app.user.auth import (get_password_hash, authenticate_user,
-                           create_access_token)
-
-from app.exceptions import CredentialsException, UserAlreadyExistsException
-
-from app.user.schemas import SUserRepresentation
-
+from app.user.schemas import SUserAuth, SUserRepresentation
 
 router = APIRouter(prefix='/auth', tags=['Auth'])
 
@@ -47,4 +43,3 @@ async def get_current_user(
 ) -> SUserRepresentation:
 
     return user
-

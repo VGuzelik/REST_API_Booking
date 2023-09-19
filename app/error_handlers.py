@@ -1,8 +1,7 @@
-from starlette.responses import JSONResponse
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import Request
 from fastapi.responses import JSONResponse
-from app.main import app
 
+from app.main import app
 
 # from exceptions import CredentialsException, UserAlreadyExistsException
 
