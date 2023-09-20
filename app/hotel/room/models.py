@@ -7,6 +7,7 @@ from app.db import Base
 class Room(Base):
     __tablename__ = 'room'
 
+
     id = Column(Integer, primary_key=True)
     hotel_id = Column(ForeignKey('hotel.id', ondelete='cascade'))
     name = Column(String, nullable=False)
@@ -14,5 +15,4 @@ class Room(Base):
     price = Column(Integer, nullable=False)
     services = Column(JSON)
     quantity = Column(Integer, nullable=False)
-    image_id = Column(Integer)
     CheckConstraint('quantity > 0', name='quantity_check')

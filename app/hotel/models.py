@@ -12,4 +12,6 @@ class Hotel(Base):
     services = Column(JSON)
     room_quantity = Column(Integer, nullable=False)
 
+    def __str__(self):
+        return f'{self.id}. {self.name}'
 

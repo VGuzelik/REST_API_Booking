@@ -1,11 +1,9 @@
 from dataclasses import dataclass
 from datetime import date
-from typing import Optional
+from typing import Optional, List
 
 # from fastapi import Query
 from pydantic import BaseModel, Field
-
-from app.image.schemas import SImage
 
 
 # @dataclass
@@ -15,7 +13,6 @@ from app.image.schemas import SImage
 #     # date_to: date
 #     # # has_spa: Optional[bool] = None
 #     # # stars: Optional[int] = Query(None, ge=1, le=5)
-
 
 class SHotelCreate(BaseModel):
 
@@ -32,4 +29,4 @@ class SHotelRepresention(BaseModel):
     location: str
     services: Optional[list] = Field(default=None)
     room_quantity: int
-    image: list[SImage]
+    image_urls: Optional[list[str | None]] = Field(default=None)

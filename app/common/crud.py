@@ -1,4 +1,4 @@
-from sqlalchemy import insert, select
+from sqlalchemy import insert, select, delete
 
 from app.db import async_session_maker
 
@@ -34,3 +34,14 @@ class BaseCRUD:
             result = await session.execute(query)
             await session.commit()
             return result.scalar()
+
+    @classmethod
+    async def delete_obj(cls, obj_id, user_id):
+        async with async_session_maker() as session:
+            query = delete(cls._model).where(
+                cls._model.id == obj_id, cls._model.user_id == user_id
+            )
+            result = await session.execute(query)
+            await session.commit()
+
+

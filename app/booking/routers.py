@@ -31,3 +31,10 @@ async def add_bookings(
         date_from=verified_data.date_from,
         price=verified_data.price,
     )
+
+
+@router.delete('/{booking_id}', status_code=204)
+async def del_bookings(
+        booking_id: int, user: User = Depends(get_current_user)
+):
+    await BookingCRUD.delete_obj(booking_id, user.id)
